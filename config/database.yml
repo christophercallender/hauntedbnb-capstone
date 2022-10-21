@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: capstone_development
+
+test:
+  <<: *default
+  database: capstone_test
+
+production:
+  <<: *default
+  database: capstone_production
+  username: capstone
+  password: <%= ENV['CAPSTONE_DATABASE_PASSWORD'] %>
